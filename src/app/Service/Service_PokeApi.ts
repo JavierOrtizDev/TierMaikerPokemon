@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class PokemonService {
-  private apiUrl = 'https://pokeapi.co/api/v2/pokemon?limit=151';
-
-  async getAllPokemons(): Promise<{ name: string; url: string }[]> {
-    const response = await fetch(this.apiUrl);
-    const data = await response.json();
-    return data.results;
+  getPokemonsPaginated(
+    limit: number = 10,
+    offset: number = 0
+  ): Promise<{ name: string; url: string }[]> {
+    return fetch(
+      `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
+    )
+      .then((res) => res.json())
+      .then((data) => data.results);
   }
 }
