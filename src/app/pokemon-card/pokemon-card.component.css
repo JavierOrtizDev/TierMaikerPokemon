@@ -1,0 +1,13 @@
+figure {
+  width: 75%;
+  height: auto;
+  margin-right: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  & img {
+    aspect-ratio: 1/1;
+    object-fit: contain;
+  }
+}
