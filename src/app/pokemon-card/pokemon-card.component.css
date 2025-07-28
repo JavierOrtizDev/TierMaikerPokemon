@@ -1,12 +1,15 @@
 figure {
-  width: 75%;
+  width: 85%;
   height: auto;
   margin-right: 1em;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   & img {
+    background-color: #333;
+    border-radius: 0.5em;
     aspect-ratio: 1/1;
     object-fit: contain;
   }

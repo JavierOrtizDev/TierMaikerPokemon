@@ -14,15 +14,19 @@ export class BrowserPokemonComponent implements OnInit {
   pokemons: { name: string; url: string }[] = [];
   currentPage = 0;
   limit = 10;
+  totalPokemons = 151;
+
   constructor(private pokemonService: PokemonService) {}
 
   async ngOnInit(): Promise<void> {
     await this.loadPage();
   }
-
+  get totalPages(): number {
+    return Math.ceil(this.totalPokemons / this.limit);
+  }
   async loadPage(): Promise<void> {
     const offset = this.currentPage * this.limit;
-    this.pokemons = await this.pokemonService.getPokemonsPaginated(
+    this.pokemons = await this.pokemonService.getPaginated151(
       this.limit,
       offset
     );

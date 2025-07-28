@@ -1,12 +1,19 @@
-<section class="browser-pokemon">
-  <app-pokemon-card *ngFor="let p of pokemons" [pokemon]="p"></app-pokemon-card>
+<section>
+  <article class="browser-pokemon">
+    <app-pokemon-card
+      *ngFor="let p of pokemons"
+      [pokemon]="p"
+    ></app-pokemon-card>
+  </article>
   <article>
-    <section class="paginaation-controls">
-      <button (click)="prevPage()" [disabled]="currentPage === 1">
+    <section class="pagination-controls">
+      <button (click)="prevPage()" [disabled]="currentPage === 0">
         Anterior
       </button>
-      <span>Página{{ currentPage + 1 }}</span>
-      <button (click)="nextPage()">Siguiente</button>
+      <span>Página</span><span>{{ currentPage + 1 }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage > totalPages - 2">
+        Siguiente
+      </button>
     </section>
   </article>
 </section>
