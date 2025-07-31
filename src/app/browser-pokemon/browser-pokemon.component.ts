@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../Service/Service_PokeApi';
 import { CommonModule } from '@angular/common';
 import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
+import { PaginatorControlerComponent } from '../paginator-controler/paginator-controler.component';
 
 @Component({
   selector: 'app-browser-pokemon',
   standalone: true,
-  imports: [CommonModule, PokemonCardComponent],
+  imports: [CommonModule, PokemonCardComponent, PaginatorControlerComponent],
   templateUrl: './browser-pokemon.component.html',
   styleUrl: './browser-pokemon.component.css',
 })
@@ -32,15 +33,8 @@ export class BrowserPokemonComponent implements OnInit {
     );
   }
 
-  nextPage(): void {
-    this.currentPage++;
+  onPageChange(page: number): void {
+    this.currentPage = page;
     this.loadPage();
-  }
-
-  prevPage(): void {
-    if (this.currentPage > 0) {
-      this.currentPage--;
-      this.loadPage();
-    }
   }
 }

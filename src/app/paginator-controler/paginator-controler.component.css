@@ -1,0 +1,23 @@
+.pagination-controls {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  & span {
+    width: 100%;
+    margin-left: 2em;
+  }
+  & button {
+    width: 9em;
+    height: 2.5em;
+    background-color: #555;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0.5em;
+    transition: trasform 0.3s ease-in-out;
+  }
+  & button:hover {
+    background-color: #666;
+    transform: scale(1.1);
+  }
+}

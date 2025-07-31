@@ -6,14 +6,12 @@
     ></app-pokemon-card>
   </article>
   <article>
-    <section class="pagination-controls">
-      <button (click)="prevPage()" [disabled]="currentPage === 0">
-        Anterior
-      </button>
-      <span>Página</span><span>{{ currentPage + 1 }}</span>
-      <button (click)="nextPage()" [disabled]="currentPage > totalPages - 2">
-        Siguiente
-      </button>
-    </section>
+    <app-paginator-controler
+      [totalItems]="totalPokemons"
+      [itemsPerPage]="limit"
+      [currentPage]="currentPage"
+      (pageChange)="onPageChange($event)"
+    >
+    </app-paginator-controler>
   </article>
 </section>
