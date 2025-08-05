@@ -1,4 +1,9 @@
 <section>
+  <article class="pokefilter">
+    <app-pokefilters
+      (filtersChanged)="onFiltersChanged($event)"
+    ></app-pokefilters>
+  </article>
   <article class="browser-pokemon">
     <app-pokemon-card
       *ngFor="let p of pokemons"

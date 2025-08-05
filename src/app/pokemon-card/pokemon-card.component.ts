@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { Pokemon } from '../Interface/Pokemon.interface';
 
 @Component({
   selector: 'app-pokemon-card',
@@ -9,11 +10,12 @@ import { Component, Input } from '@angular/core';
   styleUrl: './pokemon-card.component.css',
 })
 export class PokemonCardComponent {
-  @Input() pokemon!: { name: string; url: string };
+  @Input() pokemon!: Pokemon;
 
   get imageUrl(): string {
-    const id = this.pokemon.url.split('/').filter(Boolean).pop();
-    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+    return (
+      this.pokemon.sprites.other?.['official-artwork']?.front_default || ''
+    );
   }
   getIdFromUrl(url: string): number {
     const parts = url.split('/');

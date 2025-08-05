@@ -1,0 +1,24 @@
+<section>
+  <article>
+    <label for="search">Busca el pokemon por Nombe o Id</label>
+    <input
+      type="text"
+      id="search"
+      name="search"
+      placeholder="Bulbasur o 1"
+      [(ngModel)]="searchText"
+      (ngModelChange)="onFiltersChange()"
+    />
+  </article>
+  <article>
+    <select
+      name="select"
+      id="select"
+      [(ngModel)]="selectedType"
+      (ngModelChange)="onFiltersChange()"
+    >
+      <option value="">Todos los Tipos</option>
+      <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+    </select>
+  </article>
+</section>
