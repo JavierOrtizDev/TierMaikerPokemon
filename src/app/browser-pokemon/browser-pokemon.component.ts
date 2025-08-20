@@ -6,7 +6,7 @@ import { PaginatorControlerComponent } from '../paginator-controler/paginator-co
 import { PokefiltersComponent } from '../pokefilters/pokefilters.component';
 import { Pokemon } from '../Interface/Pokemon.interface';
 import { Pokemons } from '../Interface/Pokemos.interface';
-import { filter } from 'rxjs';
+import { TierComponent } from '../tier/tier.component';
 
 @Component({
   selector: 'app-browser-pokemon',
@@ -16,6 +16,7 @@ import { filter } from 'rxjs';
     PokemonCardComponent,
     PaginatorControlerComponent,
     PokefiltersComponent,
+    TierComponent,
   ],
   templateUrl: './browser-pokemon.component.html',
   styleUrl: './browser-pokemon.component.css',
@@ -82,5 +83,52 @@ export class BrowserPokemonComponent implements OnInit {
       all: this.allPokemons.length,
       showing: this.pokemons.length,
     });
+  }
+
+  draggedPokemon: Pokemon | null = null;
+
+  onDragStart(event: DragEvent, pokemon: Pokemon): void {
+    event.dataTransfer?.setData('application/json', JSON.stringify(pokemon));
+  }
+
+  tiers: { [key: string]: Pokemon[] } = {
+    S: [],
+    A: [],
+    B: [],
+    C: [],
+    D: [],
+    E: [],
+  };
+
+  onDrop(event: DragEvent, tier: string): void {
+    event.preventDefault();
+    if (this.draggedPokemon) {
+      // quitar de la lista principal
+      this.pokemons = this.pokemons.filter(
+        (p: { id: number }) => p.id !== this.draggedPokemon!.id
+      );
+
+      // añadir al tier
+      this.tiers[tier].push(this.draggedPokemon);
+
+      // limpiar
+      this.draggedPokemon = null;
+    }
+  }
+
+  onPokemonDropped(pokemon: Pokemon): void {
+    const rm = (arr: Pokemon[]) => {
+      const idx = arr.findIndex((x) => x.id === pokemon.id);
+      if (idx > -1) arr.splice(idx, 1);
+    };
+
+    rm(this.allPokemons);
+    rm(this.filteredPokemons);
+    rm(this.pokemons);
+
+    this.totalPokemons = (
+      this.isFiltering ? this.filteredPokemons : this.allPokemons
+    ).length;
+    this.applyFilters();
   }
 }

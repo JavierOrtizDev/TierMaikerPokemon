@@ -13,4 +13,14 @@ figure {
     aspect-ratio: 1/1;
     object-fit: contain;
   }
+  & h3 {
+    margin: -0.5px;
+  }
+  & label {
+    padding: 0.2em;
+  }
+  & select {
+    width: 3em;
+    border-radius: 5px;
+  }
 }

@@ -1,32 +1,61 @@
 <section class="tier">
-  <div class="row">
-    <aside class="label tier-s">
-      <span contenteditable="true">S</span>
-    </aside>
+  <div class="row" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'S')">
+    <aside class="label tier-s"><span contenteditable="true">S</span></aside>
+    <div class="tier-slot">
+      <app-pokemon-card
+        *ngFor="let p of tiers.S"
+        [pokemon]="p"
+      ></app-pokemon-card>
+    </div>
   </div>
-  <div class="row">
-    <aside class="label tier-a">
-      <span contenteditable="true">A</span>
-    </aside>
+
+  <div class="row" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'A')">
+    <aside class="label tier-a"><span contenteditable="true">A</span></aside>
+    <div class="tier-slot">
+      <app-pokemon-card
+        *ngFor="let p of tiers.A"
+        [pokemon]="p"
+      ></app-pokemon-card>
+    </div>
   </div>
-  <div class="row">
-    <aside class="label tier-b">
-      <span contenteditable="true">B</span>
-    </aside>
+
+  <div class="row" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'B')">
+    <aside class="label tier-b"><span contenteditable="true">B</span></aside>
+    <div class="tier-slot">
+      <app-pokemon-card
+        *ngFor="let p of tiers.B"
+        [pokemon]="p"
+      ></app-pokemon-card>
+    </div>
   </div>
-  <div class="row">
-    <aside class="label tier-c">
-      <span contenteditable="true">C</span>
-    </aside>
+
+  <div class="row" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'C')">
+    <aside class="label tier-c"><span contenteditable="true">C</span></aside>
+    <div class="tier-slot">
+      <app-pokemon-card
+        *ngFor="let p of tiers.C"
+        [pokemon]="p"
+      ></app-pokemon-card>
+    </div>
   </div>
-  <div class="row">
-    <aside class="label tier-d">
-      <span contenteditable="true">D</span>
-    </aside>
+
+  <div class="row" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'D')">
+    <aside class="label tier-d"><span contenteditable="true">D</span></aside>
+    <div class="tier-slot">
+      <app-pokemon-card
+        *ngFor="let p of tiers.D"
+        [pokemon]="p"
+      ></app-pokemon-card>
+    </div>
   </div>
-  <div class="row">
-    <aside class="label tier-e">
-      <span contenteditable="true">E</span>
-    </aside>
+
+  <div class="row" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'E')">
+    <aside class="label tier-e"><span contenteditable="true">E</span></aside>
+    <div class="tier-slot">
+      <app-pokemon-card
+        *ngFor="let p of tiers.E"
+        [pokemon]="p"
+      ></app-pokemon-card>
+    </div>
   </div>
 </section>

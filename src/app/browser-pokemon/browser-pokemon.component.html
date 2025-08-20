@@ -1,4 +1,10 @@
 <section>
+  <article class="tier">
+    <app-tier
+      (pokemonDropped)="onPokemonDropped($event)"
+      aria-hidden="true"
+    ></app-tier>
+  </article>
   <article class="pokefilter">
     <app-pokefilters
       (filtersChanged)="onFiltersChanged($event)"
@@ -8,6 +14,8 @@
     <app-pokemon-card
       *ngFor="let p of pokemons"
       [pokemon]="p"
+      draggable="true"
+      (dragstart)="onDragStart($event, p)"
     ></app-pokemon-card>
   </article>
   <article>

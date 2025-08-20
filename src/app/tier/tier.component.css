@@ -10,6 +10,7 @@
 }
 
 .row {
+  height: 200px;
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #111;
@@ -25,8 +26,8 @@
   background: var(--level, #09f);
   color: #333;
   font-weight: bold;
-  width: 80px;
-  height: 80px;
+  width: 170px;
+  height: 200px;
 
   display: flex;
   align-items: center;
