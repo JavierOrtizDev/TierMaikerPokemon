@@ -1,5 +1,5 @@
 .tier {
-  width: 65%;
+  width: 80%;
   height: 100%;
   margin: 0 auto;
   margin-top: 3vh;
@@ -10,7 +10,8 @@
 }
 
 .row {
-  height: 200px;
+  width: 100vw;
+  height: 205px;
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #111;
@@ -19,6 +20,15 @@
     background: #555;
     scale: 1, 01;
   }
+}
+.tier-slot {
+  flex: 1; /* ocupa el espacio restante después del label */
+  display: flex; /* pone las cartas en fila */
+  flex-wrap: wrap; /* permite que salten a otra línea */
+  gap: 10px; /* espacio entre cartas */
+  align-items: flex-start;
+  padding: 10px;
+  overflow-x: auto; /* si prefieres scroll horizontal */
 }
 
 .label {

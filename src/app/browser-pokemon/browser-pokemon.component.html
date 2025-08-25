@@ -1,21 +1,24 @@
 <section>
   <article class="tier">
-    <app-tier
-      (pokemonDropped)="onPokemonDropped($event)"
-      aria-hidden="true"
-    ></app-tier>
+    <app-tier (pokemonDropped)="onPokemonDropped($event)"></app-tier>
   </article>
+
   <article class="pokefilter">
     <app-pokefilters
       (filtersChanged)="onFiltersChanged($event)"
     ></app-pokefilters>
   </article>
-  <article class="browser-pokemon">
+
+  <article
+    class="browser-pokemon"
+    (dragover)="onDragOver($event)"
+    (drop)="onDropToBrowser($event)"
+  >
     <app-pokemon-card
       *ngFor="let p of pokemons"
       [pokemon]="p"
       draggable="true"
-      (dragstart)="onDragStart($event, p)"
+      (dragstart)="onDragStart($event, p, 'browser')"
     ></app-pokemon-card>
   </article>
   <article>
@@ -24,7 +27,6 @@
       [itemsPerPage]="limit"
       [currentPage]="currentPage"
       (pageChange)="onPageChange($event)"
-    >
-    </app-paginator-controler>
+    ></app-paginator-controler>
   </article>
 </section>

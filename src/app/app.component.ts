@@ -7,7 +7,7 @@ import { TierComponent } from './tier/tier.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, BrowserPokemonComponent, TierComponent],
+  imports: [CommonModule, BrowserPokemonComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

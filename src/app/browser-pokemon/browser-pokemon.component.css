@@ -11,6 +11,7 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1.5em;
 }
 .browser-pokemon {
   width: 55%;
@@ -20,5 +21,5 @@ section {
   gap: 0.5em;
 }
 .tier {
-  display: none;
+  width: 90%;
 }
