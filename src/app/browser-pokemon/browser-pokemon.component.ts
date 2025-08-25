@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PokemonService } from '../Service/Service_PokeApi';
 import { CommonModule } from '@angular/common';
 import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 import { PaginatorControlerComponent } from '../paginator-controler/paginator-controler.component';
 import { PokefiltersComponent } from '../pokefilters/pokefilters.component';
 import { Pokemon } from '../Interface/Pokemon.interface';
-import { Pokemons } from '../Interface/Pokemos.interface';
-import { TierComponent } from '../tier/tier.component';
-import { PokemonDropEvent } from '../tier/tier.component';
+import {
+  TierComponent,
+  PokemonDropEvent,
+  TierKey,
+} from '../tier/tier.component';
 
 @Component({
   selector: 'app-browser-pokemon',
@@ -23,6 +25,7 @@ import { PokemonDropEvent } from '../tier/tier.component';
   styleUrl: './browser-pokemon.component.css',
 })
 export class BrowserPokemonComponent implements OnInit {
+  @ViewChild(TierComponent) tierCmp!: TierComponent;
   allPokemons: Pokemon[] = [];
   filteredPokemons: Pokemon[] = [];
   pokemons: Pokemon[] = [];
@@ -80,35 +83,32 @@ export class BrowserPokemonComponent implements OnInit {
 
   onDropToBrowser(event: DragEvent): void {
     event.preventDefault();
-    const data = event.dataTransfer?.getData('application/json');
-    if (!data) return;
+    const raw = event.dataTransfer?.getData('application/json');
+    if (!raw) return;
 
-    const { source, pokemon } = JSON.parse(data) as {
-      source: string;
+    const { source, pokemon } = JSON.parse(raw) as {
+      source: TierKey | 'browser';
       pokemon: Pokemon;
     };
 
-    // Solo si viene de un tier
+    console.log('[DROP→BROWSER]', { source, id: pokemon.id });
+
     if (source !== 'browser') {
-      // Eliminar duplicado
+      this.tierCmp.removePokemonFromAnyTier(pokemon.id);
+
       if (!this.allPokemons.some((p) => p.id === pokemon.id)) {
         this.allPokemons.push(pokemon);
+        this.allPokemons.sort((a, b) => a.id - b.id);
       }
 
-      // Ordenar por ID para mantener la posición original
-      this.allPokemons.sort((a, b) => a.id - b.id);
-
-      // Aplicar filtros y paginación
       this.applyFilters();
     }
   }
 
-  // Cuando un Pokémon se deja en un tier
   onPokemonDropped(event: PokemonDropEvent): void {
     const { pokemon, toBrowser } = event;
 
     if (toBrowser) {
-      // Si viene del tier y va al browser
       if (!this.allPokemons.some((p) => p.id === pokemon.id)) {
         this.allPokemons.push(pokemon);
         this.allPokemons.sort((a, b) => a.id - b.id);
@@ -117,7 +117,6 @@ export class BrowserPokemonComponent implements OnInit {
       return;
     }
 
-    // Si viene del browser y fue a un tier, eliminarlo del browser
     const rm = (arr: Pokemon[]) => {
       const idx = arr.findIndex((x) => x.id === pokemon.id);
       if (idx > -1) arr.splice(idx, 1);
@@ -133,9 +132,7 @@ export class BrowserPokemonComponent implements OnInit {
     this.applyFilters();
   }
 
-  // Cuando un Pokémon se arrastra desde un tier de vuelta al browser
   onPokemonReturned(pokemon: Pokemon): void {
-    // agregar al browser
     this.allPokemons.push(pokemon);
     this.applyFilters();
   }
@@ -155,13 +152,10 @@ export class BrowserPokemonComponent implements OnInit {
         pokemon: Pokemon;
       };
 
-      // ⚡ Solo si viene de un Tier
       if (source !== 'browser') {
-        // Evitamos duplicados
         if (!this.pokemons.some((p) => p.id === pokemon.id)) {
           this.pokemons.push(pokemon);
 
-          // 🔹 Reordenamos por ID para colocarlo en su posición original
           this.pokemons.sort((a, b) => a.id - b.id);
         }
       }

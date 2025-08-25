@@ -3,7 +3,7 @@ import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 import { Pokemon } from '../Interface/Pokemon.interface';
 import { CommonModule } from '@angular/common';
 
-type TierKey = 'S' | 'A' | 'B' | 'C' | 'D' | 'E';
+export type TierKey = 'S' | 'A' | 'B' | 'C' | 'D' | 'E';
 
 export interface PokemonDropEvent {
   pokemon: Pokemon;
@@ -90,6 +90,14 @@ export class TierComponent {
       pokemon,
       fromBrowser: source === 'browser',
       toBrowser: false,
+    });
+  }
+
+  removePokemonFromAnyTier(pokemonId: number): void {
+    console.log('[TIER] remove', pokemonId);
+
+    this.tierKeys.forEach((k) => {
+      this.tiers[k] = this.tiers[k].filter((p) => p.id !== pokemonId);
     });
   }
 }
