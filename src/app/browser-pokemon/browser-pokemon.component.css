@@ -23,4 +23,5 @@ section {
 .tier {
   width: 90%;
   height: 60em;
+  margin-bottom: -20em;
 }

@@ -7,6 +7,8 @@ figure {
   align-items: center;
 
   & img {
+    width: 5vw;
+    height: 5hw;
     background-color: #333;
     border-radius: 0.5em;
     aspect-ratio: 1/1;

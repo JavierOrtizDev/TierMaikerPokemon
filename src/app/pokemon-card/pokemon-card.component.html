@@ -1,7 +1,7 @@
 <figure tabindex="0" draggable="true" (dragstart)="handleDragStart($event)">
-  <img [src]="imageUrl" [alt]="pokemon.name" width="120" height="120" />
+  <img [src]="imageUrl" [alt]="pokemon.name" />
   <h3>{{ pokemon.name | titlecase }}</h3>
-  <label for="tier">¿Posición en tier?</label>
+  <!--  <label for="tier">¿Posición en tier?</label>
   <select name="tier" id="tier">
     <option value="s">S</option>
     <option value="a">A</option>
@@ -9,5 +9,5 @@
     <option value="c">C</option>
     <option value="d">D</option>
     <option value="e">E</option>
-  </select>
+  </select> -->
 </figure>
