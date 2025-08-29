@@ -1,27 +1,84 @@
-# PokeTier
+# 🎮 PokéTier – Tier List de Pokémon
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.3.
+## 📌 Descripción
 
-## Development server
+PokéTier es una aplicación web desarrollada en **Angular 17** que permite crear tu propia **Tier List de Pokémon de la primera generación (Kanto)**.  
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Incluye:  
+✅ Navegador de Pokémon con paginación  
+✅ Filtros por nombre, ID y tipo  
+✅ Sistema drag & drop para arrastrar Pokémon a diferentes tiers  
+✅ Guardado dinámico de la lista en el navegador  
+✅ Diseño responsive  
 
-## Code scaffolding
+Este proyecto surge como práctica de **desarrollo web**, utilizando la **PokéAPI** como fuente de datos.  
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+🔜 En el futuro está previsto mejorar el drag & drop para hacerlo completamente accesible mediante teclado y lectores de pantalla.
 
-## Build
+## 🛠️ Tecnologías y Herramientas
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Angular 17+** → Framework principal  
+- **TypeScript** → Tipado estático y mantenimiento del código  
+- **PokéAPI** → API REST pública con datos de Pokémon  
+- **HTML5 + CSS3** → Maquetación y estilos nativos  
+- **RxJS** → Gestión de peticiones asíncronas y streams de datos  
+- **Drag & Drop nativo** → Implementado con eventos del DOM  
+- **Paginación y filtros personalizados** → Control de búsqueda y navegación de Pokémon  
 
-## Running unit tests
+## 🚀 Instalación y Uso
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Clonar el repositorio
 
-## Running end-to-end tests
+Instalar dependencias
+```npm install```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Ejecutar en desarrollo
+```ng serve```
 
-## Further help
+Abre en 👉 http://localhost:4200/
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+🎨 Vista Previa
+
+(Aquí puedes poner un GIF o capturas de tu aplicación)
+
+Ejemplo:
+```src/
+├── app/
+│   ├── components/
+│   │   ├── browser-pokemon/   → Listado y paginación
+│   │   ├── pokemon-card/      → Tarjeta de Pokémon
+│   │   ├── tier/              → Contenedor de tiers
+│   │   ├── pokefilters/       → Filtros de búsqueda
+│   │   └── paginator/         → Control de paginación
+│   ├── services/              → Servicio PokéAPI
+│   └── app.component.ts       → Raíz de la aplicación
+├── assets/                    → Imágenes y recursos
+└── styles.css                 → Estilos globales
+```
+
+
+🤝 Contribuciones
+
+¡Las PRs y sugerencias son bienvenidas!
+
+Si quieres contribuir:
+
+Haz un fork 🍴
+
+Crea una rama feature/nueva-funcionalidad
+
+Sube tus cambios con un commit claro
+
+Abre un Pull Request 🚀
+
+📜 Licencia
+
+Este proyecto está bajo la licencia MIT.
+Pokémon y sus sprites pertenecen a The Pokémon Company y se usan aquí solo con fines educativos.
+
+👨‍💻 Autor
+
+Javier Ortiz
+💼 Desarrollador Web & Ciberseguridad
+git clone https://github.com/tu-usuario/poketier.git
+cd poketier
